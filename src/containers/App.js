@@ -42,6 +42,8 @@ class App extends Component {
   };
 
   togglePersonsHandler = () => {
+    console.log("button click event is happend");
+
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
   };
@@ -61,6 +63,7 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Cockpit
+          title = { this.props.appTitle }
           showPersons = {this.state.showPersons}
           persons = { this.state.persons }
           clicked = { this.togglePersonsHandler }

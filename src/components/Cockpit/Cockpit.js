@@ -9,7 +9,7 @@ const cockpit = (props) => {
             alert('Saved data to cloud');
         }, 1000);
 
-    }, [props.persons]);
+    }, []);
     
     
     const assignedClasses = [];

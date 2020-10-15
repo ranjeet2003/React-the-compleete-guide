@@ -1,31 +1,39 @@
 import React, { PureComponent } from 'react';
+
 import Person from './Person/Person';
 
 class Persons extends PureComponent {
-
   // static getDerivedStateFromProps(props, state) {
   //   console.log('[Persons.js] getDerivedStateFromProps');
   //   return state;
   // }
 
-  componentWillReceiveProps(props) {
-    console.log('[Person.js] componentWillRecieveProps', props);
-  }
-
-  // shouldComponentUpdate( nextProps, nextState ) {
-  //   console.log('[Persons.js] shouldComponentsUpdate');
-  //   if(nextProps.persons !== this.props.persons || nextProps.changed !== this.props.changed || nextProps.clicked !==this.props.clicked) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false;
-  //   }
+  // componentWillReceiveProps(props) {
+  //   console.log('[Persons.js] componentWillReceiveProps', props);
   // }
 
-  getSnapshotBeforeUpdate( prevProps, prevState ) {
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[Persons.js] shouldComponentUpdate');
+  //   if (
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.changed !== this.props.changed ||
+  //     nextProps.clicked !== this.props.clicked
+  //   ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  //   // return true;
+  // }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log('[Persons.js] getSnapshotBeforeUpdate');
-    return { message: 'Snapshot !' }
+    return { message: 'Snapshot!' };
   }
+
+  // componentWillUpdate() {
+
+  // }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('[Persons.js] componentDidUpdate');
@@ -33,11 +41,11 @@ class Persons extends PureComponent {
   }
 
   componentWillUnmount() {
-    console.log('[Persons.js] componentWillUnmount' );
+    console.log('[Persons.js] componentWillUnmount');
   }
 
   render() {
-    console.log('Person.js is rendering');
+    console.log('[Persons.js] rendering...');
     return this.props.persons.map((person, index) => {
       return (
         <Person
@@ -45,7 +53,7 @@ class Persons extends PureComponent {
           name={person.name}
           age={person.age}
           key={person.id}
-          changed={(event) => this.props.changed(event, person.id)}
+          changed={event => this.props.changed(event, person.id)}
         />
       );
     });
